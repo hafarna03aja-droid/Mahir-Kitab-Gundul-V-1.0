@@ -12,7 +12,8 @@
     "resolveJsonModule": true,
     "strict": false,
     "noEmit": false,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "allowImportingTsExtensions": false
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist"]
