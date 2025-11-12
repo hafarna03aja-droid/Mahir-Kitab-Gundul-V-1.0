@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ES2022",
     "module": "CommonJS",
@@ -10,8 +11,9 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "strict": false,
-    "noEmit": true
+    "noEmit": false,
+    "outDir": "./dist"
   },
   "include": ["**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
