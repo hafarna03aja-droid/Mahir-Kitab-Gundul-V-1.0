@@ -514,17 +514,35 @@ class KelolaBerkas:
                 f.write(html_content)
             
             # Buka di browser
-            preview_url = f"file:///{preview_file.absolute().as_posix()}"
+            file_url = f"file:///{preview_file.absolute().as_posix()}"
+            http_url = f"http://localhost:8000/preview_{berkas['id']}.html"
             
             print(f"\n✅ Preview berhasil dibuat!")
             print(f"📖 Judul: {berkas['judul']}")
             print(f"🌐 Membuka preview di browser...")
             
-            # Buka di browser default
-            webbrowser.open(preview_url)
+            # Coba buka dengan HTTP server dulu, fallback ke file URL
+            try:
+                import socket
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                result = sock.connect_ex(('localhost', 8000))
+                sock.close()
+                
+                if result == 0:
+                    # Server running, gunakan HTTP URL
+                    webbrowser.open(http_url)
+                    print(f"🔗 URL: {http_url}")
+                    print(f"💡 Server preview aktif di port 8000")
+                else:
+                    # Server tidak running, gunakan file URL
+                    webbrowser.open(file_url)
+                    print(f"🔗 URL: {file_url}")
+                    print(f"💡 Untuk preview lebih baik, jalankan: python preview_server.py")
+            except:
+                webbrowser.open(file_url)
+                print(f"🔗 URL: {file_url}")
             
-            print(f"💡 Path preview: {preview_file}")
-            print(f"🔗 URL: {preview_url}")
+            print(f"📁 Path: {preview_file}")
             
         except ValueError:
             print("❌ ID harus berupa angka!")
