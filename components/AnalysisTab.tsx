@@ -91,23 +91,23 @@ const AnalysisTab: React.FC = () => {
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-6 sm:p-8 text-slate-800">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-4 sm:p-6 lg:p-8 text-slate-800">
                 <div className="prose prose-slate max-w-none">
-                    <h2 className="text-2xl font-bold text-slate-900">Penganalisis Teks Arab</h2>
-                    <p>
+                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900">Penganalisis Teks Arab</h2>
+                    <p className="text-sm sm:text-base">
                         Masukkan teks Arab (dengan atau tanpa harakat) di bawah ini untuk mendapatkan analisis gramatikal (I'rab) yang mendalam, teks yang sudah divokalisasi, dan terjemahannya.
                     </p>
                 </div>
                 
-                <div className="mt-6">
-                    <label className="block text-sm font-medium text-slate-600 mb-2">Pilih Contoh Teks dari Kategori:</label>
-                    <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-3 mb-3">
+                <div className="mt-4 sm:mt-6">
+                    <label className="block text-xs sm:text-sm font-medium text-slate-600 mb-2">Pilih Contoh Teks dari Kategori:</label>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 border-b border-slate-200 pb-2 sm:pb-3 mb-2 sm:mb-3">
                         {Object.keys(CATEGORIZED_EXAMPLES).map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 ${
+                                className={`px-2 sm:px-4 py-1.5 sm:py-2 rounded-md text-xs sm:text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 ${
                                     selectedCategory === category
                                         ? 'bg-amber-500 text-white shadow'
                                         : 'bg-white text-slate-700 hover:bg-slate-200 border border-slate-300'
@@ -118,12 +118,12 @@ const AnalysisTab: React.FC = () => {
                         ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-2 min-h-[40px] items-center">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 min-h-[40px] items-center">
                         {CATEGORIZED_EXAMPLES[selectedCategory].map((example) => (
                             <button
                                 key={example.label}
                                 onClick={() => setInputText(example.text)}
-                                className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm hover:bg-amber-100 border border-slate-200 transition-colors"
+                                className="px-2 sm:px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs sm:text-sm hover:bg-amber-100 border border-slate-200 transition-colors"
                             >
                                 {example.label}
                             </button>
@@ -131,77 +131,77 @@ const AnalysisTab: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-200">
-                    <h3 className="text-lg font-bold text-slate-700">Alat Bantu: Konversi Teks Indonesia</h3>
-                    <p className="text-sm text-slate-500 mb-3">
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-200">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-700">Alat Bantu: Konversi Teks Indonesia</h3>
+                    <p className="text-xs sm:text-sm text-slate-500 mb-2 sm:mb-3">
                         Ketik kalimat dalam Bahasa Indonesia, lalu klik konversi untuk membuat teks Arab gundulnya. Teks akan muncul di kotak utama di bawah untuk dianalisis.
                     </p>
                     <textarea
                         value={indonesianInput}
                         onChange={(e) => setIndonesianInput(e.target.value)}
                         placeholder="Contoh: 'ilmu itu adalah cahaya'..."
-                        className="w-full h-24 p-3 border border-slate-300 rounded-md focus:ring-amber-500 focus:border-amber-500 text-base"
+                        className="w-full h-20 sm:h-24 p-2 sm:p-3 border border-slate-300 rounded-md focus:ring-amber-500 focus:border-amber-500 text-sm sm:text-base"
                     />
                     <div className="mt-2 flex justify-end">
                         <button
                             onClick={handleConvert}
                             disabled={isConverting}
-                            className="px-5 py-2 bg-slate-600 text-white text-sm font-semibold rounded-md hover:bg-slate-700 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
+                            className="px-3 sm:px-5 py-2 bg-slate-600 text-white text-xs sm:text-sm font-semibold rounded-md hover:bg-slate-700 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed"
                         >
                             {isConverting ? 'Mengonversi...' : 'Konversi ke Arab Gundul'}
                         </button>
                     </div>
                     {conversionError && (
-                        <div className="mt-3 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm">
+                        <div className="mt-3 p-2 sm:p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-xs sm:text-sm">
                             <p><span className="font-bold">Error Konversi:</span> {conversionError}</p>
                         </div>
                     )}
                 </div>
 
-                <div className="mt-6">
-                    <label className="block text-sm font-medium text-slate-600 mb-2">Teks Arab untuk Dianalisis:</label>
+                <div className="mt-4 sm:mt-6">
+                    <label className="block text-xs sm:text-sm font-medium text-slate-600 mb-2">Teks Arab untuk Dianalisis:</label>
                     <textarea
                         value={inputText}
                         onChange={(e) => setInputText(e.target.value)}
                         placeholder="...اكتب النص العربي هنا أو اختر dari contoh/konversi di atas"
-                        className="w-full h-48 p-4 border border-slate-300 rounded-md focus:ring-amber-500 focus:border-amber-500 font-arabic text-2xl text-right"
+                        className="w-full h-40 sm:h-48 p-3 sm:p-4 border border-slate-300 rounded-md focus:ring-amber-500 focus:border-amber-500 font-arabic text-xl sm:text-2xl text-right"
                         dir="rtl"
                         lang="ar"
                     />
                 </div>
 
-                <div className="mt-4 flex justify-end">
+                <div className="mt-3 sm:mt-4 flex justify-end">
                     <button
                         onClick={() => handleAnalyze()}
                         disabled={isLoading}
-                        className="px-6 py-3 bg-amber-500 text-white font-bold rounded-md hover:bg-amber-600 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed flex items-center"
+                        className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-amber-500 text-white font-bold text-sm sm:text-base rounded-md hover:bg-amber-600 transition-colors disabled:bg-slate-400 disabled:cursor-not-allowed flex items-center justify-center"
                     >
                         {isLoading ? 'Menganalisis...' : 'Analisis Teks'}
                     </button>
                 </div>
                 
                 {error && (
-                    <div className="mt-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                    <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-red-100 border border-red-400 text-red-700 rounded-md text-xs sm:text-sm">
                         <p><span className="font-bold">Error:</span> {error}</p>
                     </div>
                 )}
 
-                <div className="mt-8">
+                <div className="mt-6 sm:mt-8">
                     {isLoading && <LoadingSpinner />}
                     {result && <AnalysisResultDisplay result={result} />}
                 </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-6 h-fit sticky top-24">
-                <h3 className="text-lg font-bold text-slate-800 border-b border-slate-200 pb-3 mb-3">Riwayat Analisis</h3>
+            <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 h-fit lg:sticky lg:top-24">
+                <h3 className="text-base sm:text-lg font-bold text-slate-800 border-b border-slate-200 pb-2 sm:pb-3 mb-2 sm:mb-3">Riwayat Analisis</h3>
                 {history.length > 0 ? (
                     <>
-                        <ul className="space-y-2 max-h-96 overflow-y-auto">
+                        <ul className="space-y-1.5 sm:space-y-2 max-h-60 sm:max-h-96 overflow-y-auto">
                             {history.map((item, index) => (
                                 <li key={index}>
                                     <button 
                                         onClick={() => handleHistoryClick(item)}
-                                        className="w-full text-right p-2 font-arabic text-md text-slate-700 rounded-md hover:bg-amber-50 transition-colors truncate"
+                                        className="w-full text-right p-2 font-arabic text-sm sm:text-md text-slate-700 rounded-md hover:bg-amber-50 transition-colors truncate"
                                     >
                                         {item}
                                     </button>
@@ -210,13 +210,13 @@ const AnalysisTab: React.FC = () => {
                         </ul>
                         <button 
                             onClick={() => setHistory([])}
-                            className="w-full mt-4 px-4 py-2 text-sm text-red-700 bg-red-100 hover:bg-red-200 rounded-md transition-colors"
+                            className="w-full mt-3 sm:mt-4 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-red-700 bg-red-100 hover:bg-red-200 rounded-md transition-colors"
                         >
                             Bersihkan Riwayat
                         </button>
                     </>
                 ) : (
-                    <p className="text-sm text-slate-500 italic">Belum ada riwayat analisis.</p>
+                    <p className="text-xs sm:text-sm text-slate-500 italic">Belum ada riwayat analisis.</p>
                 )}
             </div>
         </div>

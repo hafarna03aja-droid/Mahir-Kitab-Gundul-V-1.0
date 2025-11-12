@@ -2,7 +2,10 @@
 <html lang="id" class="dark">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Mahir Kitab Gundul</title>
     <meta name="description" content="An AI-powered application to help users master reading and understanding classical Arabic texts, similar to the learning experience in a 'pesantren'." />
     
@@ -26,10 +29,14 @@
     </script>
     
     <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
         body {
             font-family: 'Inter', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
         }
         .font-arabic {
             font-family: 'Amiri', serif;
@@ -40,6 +47,16 @@
         }
         .animate-modal-enter {
             animation: modal-enter 0.3s ease-out forwards;
+        }
+        /* Better touch targets for mobile */
+        button, a, input, textarea {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        /* Prevent text size adjustment on orientation change */
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
         }
     </style>
     

@@ -10,8 +10,26 @@ const CogIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const Header: React.FC = () => {
     return (
         <header className="bg-slate-800/50 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-10">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between h-20">
+            <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+                {/* Mobile Layout */}
+                <div className="flex flex-col items-center py-3 sm:hidden">
+                    <div className="flex items-center justify-between w-full mb-2">
+                        <div className="flex items-baseline space-x-1">
+                            <span className="text-white text-base font-bold">Mahir Kitab Gundul</span>
+                            <span className="text-xs font-semibold text-amber-400 bg-slate-700/50 px-1.5 py-0.5 rounded-full">v1.0</span>
+                        </div>
+                        <button className="text-slate-400 hover:text-white transition-colors">
+                            <CogIcon className="h-5 w-5" />
+                        </button>
+                    </div>
+                    <div className="text-center">
+                        <h1 className="text-xl font-bold text-amber-400 font-arabic tracking-wide">مَاهِرُ الكِتَابِ الجُنْدُلِ</h1>
+                        <p className="text-slate-300 text-xs mt-0.5">Pemandu Cerdas Anda untuk Menguasai Teks Arab</p>
+                    </div>
+                </div>
+                
+                {/* Desktop Layout */}
+                <div className="hidden sm:flex items-center justify-between h-20">
                     <div className="flex-shrink-0">
                         <div className="flex items-baseline space-x-2">
                             <span className="text-white text-xl font-bold">Mahir Kitab Gundul</span>
