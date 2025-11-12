@@ -73,6 +73,28 @@ export const deleteAnalysisHistory = async (id: string): Promise<boolean> => {
 };
 
 /**
+ * Clear all analysis history
+ */
+export const clearAllHistory = async (): Promise<boolean> => {
+    try {
+        const { error } = await supabase
+            .from('analysis_history')
+            .delete()
+            .neq('id', '00000000-0000-0000-0000-000000000000'); // Delete all rows
+
+        if (error) {
+            console.error('Error clearing history:', error);
+            return false;
+        }
+
+        return true;
+    } catch (error) {
+        console.error('Error clearing history:', error);
+        return false;
+    }
+};
+
+/**
  * Check if Supabase is configured
  */
 export const isSupabaseConfigured = (): boolean => {

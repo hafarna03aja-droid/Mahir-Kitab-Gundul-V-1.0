@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { analyzeArabicText, convertToArabGundul } from '../services/geminiService';
+import { saveAnalysisHistory, getAnalysisHistory, clearAllHistory } from '../services/supabaseService';
 import { CATEGORIZED_EXAMPLES } from '../constants';
 import type { AnalysisResult } from '../types';
 import AnalysisResultDisplay from './AnalysisResultDisplay';
@@ -23,26 +24,43 @@ const AnalysisTab: React.FC = () => {
     const [indonesianInput, setIndonesianInput] = useState('');
     const [isConverting, setIsConverting] = useState(false);
     const [conversionError, setConversionError] = useState<string | null>(null);
-    const [history, setHistory] = useState<string[]>([]);
+    const [history, setHistory] = useState<any[]>([]);
+    const [loadingHistory, setLoadingHistory] = useState(true);
 
+    // Load history from Supabase on mount
     useEffect(() => {
-        try {
-            const storedHistory = localStorage.getItem('analysisHistory');
-            if (storedHistory) {
-                setHistory(JSON.parse(storedHistory));
+        const loadHistory = async () => {
+            setLoadingHistory(true);
+            try {
+                const dbHistory = await getAnalysisHistory(20);
+                if (dbHistory.length > 0) {
+                    setHistory(dbHistory);
+                } else {
+                    // Fallback to localStorage if no database data
+                    const storedHistory = localStorage.getItem('analysisHistory');
+                    if (storedHistory) {
+                        const localHistory = JSON.parse(storedHistory);
+                        setHistory(localHistory.map((text: string) => ({ original_text: text })));
+                    }
+                }
+            } catch (e) {
+                console.error("Failed to load history", e);
+                // Fallback to localStorage
+                try {
+                    const storedHistory = localStorage.getItem('analysisHistory');
+                    if (storedHistory) {
+                        const localHistory = JSON.parse(storedHistory);
+                        setHistory(localHistory.map((text: string) => ({ original_text: text })));
+                    }
+                } catch (e2) {
+                    console.error("Failed to parse localStorage", e2);
+                }
+            } finally {
+                setLoadingHistory(false);
             }
-        } catch (e) {
-            console.error("Failed to parse history from localStorage", e);
-        }
+        };
+        loadHistory();
     }, []);
-
-    useEffect(() => {
-        try {
-            localStorage.setItem('analysisHistory', JSON.stringify(history));
-        } catch (e) {
-            console.error("Failed to save history to localStorage", e);
-        }
-    }, [history]);
 
     const handleAnalyze = async (textToAnalyze: string = inputText) => {
         if (!textToAnalyze.trim()) {
@@ -56,11 +74,17 @@ const AnalysisTab: React.FC = () => {
         try {
             const analysisResult = await analyzeArabicText(textToAnalyze);
             setResult(analysisResult);
-            // Add to history
-            setHistory(prevHistory => {
-                const newHistory = [textToAnalyze, ...prevHistory.filter(item => item !== textToAnalyze)];
-                return newHistory.slice(0, 20); // Limit history to 20 items
-            });
+            
+            // Save to Supabase database
+            await saveAnalysisHistory(analysisResult);
+            
+            // Reload history from database
+            const updatedHistory = await getAnalysisHistory(20);
+            setHistory(updatedHistory);
+            
+            // Also update localStorage as backup
+            const textHistory = updatedHistory.map(item => item.original_text);
+            localStorage.setItem('analysisHistory', JSON.stringify(textHistory));
         } catch (err) {
             setError((err as Error).message || 'Terjadi kesalahan yang tidak diketahui.');
         } finally {
@@ -193,28 +217,46 @@ const AnalysisTab: React.FC = () => {
             </div>
 
             <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 h-fit lg:sticky lg:top-24">
-                <h3 className="text-base sm:text-lg font-bold text-slate-800 border-b border-slate-200 pb-2 sm:pb-3 mb-2 sm:mb-3">Riwayat Analisis</h3>
+                <h3 className="text-base sm:text-lg font-bold text-slate-800 border-b border-slate-200 pb-2 sm:pb-3 mb-2 sm:mb-3">
+                    Riwayat Analisis
+                    {loadingHistory && <span className="text-xs text-slate-500 ml-2">(memuat...)</span>}
+                </h3>
                 {history.length > 0 ? (
                     <>
                         <ul className="space-y-1.5 sm:space-y-2 max-h-60 sm:max-h-96 overflow-y-auto">
                             {history.map((item, index) => (
-                                <li key={index}>
+                                <li key={item.id || index}>
                                     <button 
-                                        onClick={() => handleHistoryClick(item)}
+                                        onClick={() => handleHistoryClick(item.original_text)}
                                         className="w-full text-right p-2 font-arabic text-sm sm:text-md text-slate-700 rounded-md hover:bg-amber-50 transition-colors truncate"
+                                        title={item.original_text}
                                     >
-                                        {item}
+                                        {item.original_text}
                                     </button>
                                 </li>
                             ))}
                         </ul>
                         <button 
-                            onClick={() => setHistory([])}
+                            onClick={async () => {
+                                // Clear from Supabase
+                                await clearAllHistory();
+                                // Clear localStorage
+                                localStorage.removeItem('analysisHistory');
+                                // Clear UI
+                                setHistory([]);
+                            }}
                             className="w-full mt-3 sm:mt-4 px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-red-700 bg-red-100 hover:bg-red-200 rounded-md transition-colors"
                         >
                             Bersihkan Riwayat
                         </button>
                     </>
+                ) : loadingHistory ? (
+                    <div className="flex items-center justify-center p-4">
+                        <svg className="animate-spin h-5 w-5 text-amber-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                    </div>
                 ) : (
                     <p className="text-xs sm:text-sm text-slate-500 italic">Belum ada riwayat analisis.</p>
                 )}
