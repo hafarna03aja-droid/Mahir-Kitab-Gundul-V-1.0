@@ -114,14 +114,58 @@ export const scholarsData: Scholar[] = [
     },
     {
         id: 9,
-        name: "Imam An-Nawawi",
-        era: "1233–1277 M",
-        expertise: "Hadis, Fiqh Syafi'i",
-        bio: "Abu Zakariya Yahya bin Syaraf an-Nawawi adalah ulama hadis dan fiqh terkemuka dari Suriah. Karya-karyanya sangat dihormati dan dipelajari secara luas, terutama dalam Mazhab Syafi'i.",
-        imageUrl: "/images/al-nawawi.jpg",
+        name: "Imam Nawawi",
+        era: "631 H - 676 H / 1233 M - 1277 M",
+        birthPlace: "Nawa, Damaskus, Suriah",
+        expertise: "Fiqih Syafi'i, Hadits, Tasawuf, Ushul Fiqh",
+        bio: `Imam Muhyiddin Abu Zakaria Yahya bin Syaraf An-Nawawi adalah salah satu ulama besar madzhab Syafi'i yang sangat berpengaruh dalam sejarah Islam. Beliau lahir di desa Nawa, dekat Damaskus pada tahun 631 H (1233 M) dan wafat di usia muda 45 tahun pada 676 H (1277 M).
+
+**Masa Kecil dan Pendidikan:**
+Sejak kecil, Imam Nawawi dikenal memiliki kecerdasan luar biasa dan kecintaan mendalam terhadap ilmu. Pada usia 10 tahun, beliau sudah hafal Al-Qur'an. Di usia 18 tahun, beliau pindah ke Damaskus untuk menuntut ilmu dan menetap di Madrasah Ar-Rawahiyyah. Di sana beliau belajar dengan sangat tekun, konon beliau hanya tidur beberapa jam setiap hari dan menghabiskan seluruh waktunya untuk belajar dan menulis.
+
+**Guru-Guru Beliau:**
+Imam Nawawi berguru kepada lebih dari 20 ulama besar, di antaranya:
+- Syaikh Abu Ibrahim Ishaq bin Ahmad Al-Maghribi (Fiqih)
+- Syaikh Abdul Rahman bin Ibrahim bin Sabba' Al-Fazari (Fiqih)
+- Abu Muhammad Abdurrahman bin Abi Umar (Hadits)
+- Syaikh Abu Ishaq Ibrahim bin Isa Al-Muradi (Ushul Fiqh)
+- Radiyuddin Abu Ishaq Ibrahim bin Abu Hafsh Umar (Hadits)
+
+**Sifat dan Akhlak:**
+Beliau terkenal dengan kezuhudan, wara', keberanian menyampaikan kebenaran, dan keteguhan dalam menegakkan amar ma'ruf nahi munkar. Imam Nawawi berani mengkritik penguasa yang zalim meskipun harus menghadapi ancaman. Beliau hidup sangat sederhana, tidak menikah, dan mengabdikan seluruh hidupnya untuk ilmu dan ibadah.
+
+**Kontribusi dalam Keilmuan Islam:**
+1. **Hadits**: Mensyarah Shahih Muslim yang menjadi rujukan utama hingga kini
+2. **Fiqih**: Menyusun kitab-kitab fiqih yang menjadi pegangan madzhab Syafi'i
+3. **Akhlak dan Tasawuf**: Menulis kitab Riyadhus Shalihin yang dibaca di seluruh dunia Islam
+4. **Ushul Fiqh**: Memberikan kontribusi penting dalam metodologi hukum Islam
+
+**Keistimewaan:**
+- Menulis lebih dari 40 kitab meskipun usia pendek
+- Kitab-kitabnya menjadi rujukan utama di berbagai pesantren dan universitas Islam
+- Dikenal sebagai Muhyiddin (penghidup agama) karena kontribusinya yang luar biasa
+- Hafal ratusan ribu hadits beserta sanad dan ilalnya
+- Menjadi imam dan mufti madzhab Syafi'i di masanya
+
+**Warisan Intelektual:**
+Karya-karya Imam Nawawi tetap hidup hingga hari ini dan dipelajari oleh jutaan Muslim di seluruh dunia. Beliau berhasil menyederhanakan ilmu-ilmu agama yang kompleks menjadi mudah dipahami tanpa mengurangi kedalaman ilmiahnya. Metode pensyarahan hadits beliau menjadi standar dalam dunia keilmuan Islam.
+
+Imam Nawawi wafat di kampung halamannya, Nawa, pada tahun 676 H dalam usia 45 tahun. Meskipun hidupnya singkat, warisan ilmiahnya tetap abadi dan terus memberikan manfaat bagi umat Islam hingga akhir zaman.`,
         books: [
-            { title: "Riyadhus Shalihin", description: "Kumpulan hadis tentang etika, akhlak, dan ibadah, menjadi salah satu buku Islam paling populer." },
-            { title: "Al-Arba'in An-Nawawiyyah", description: "Kumpulan 42 hadis fundamental yang mencakup esensi ajaran Islam." },
+            {
+                title: "Riyadhus Shalihin", 
+                description: "Kumpulan hadits pilihan tentang akhlak, adab, dan amalan sehari-hari. Kitab ini terdiri dari 372 bab yang disusun secara tematik, mencakup berbagai aspek kehidupan Muslim mulai dari keikhlasan, taubat, sabar, jujur, hingga adab makan dan tidur. Setiap bab diawali dengan ayat Al-Qur'an yang relevan kemudian diikuti hadits-hadits shahih. Kitab ini menjadi salah satu kitab hadits paling populer dan paling banyak dipelajari di seluruh dunia Islam karena kemudahan bahasa dan praktikalitas isinya.",
+                content: "انما الاعمال بالنيات وانما لكل امرئ ما نوى فمن كانت هجرته الى دنيا يصيبها او الى امراة ينكحها فهجرته الى ما هاجر اليه"
+            },
+            { title: "Al-Adzkar", description: "Himpunan doa dan zikir untuk berbagai waktu dan kondisi. Kitab komprehensif yang memuat doa-doa dari Al-Qur'an dan Sunnah untuk setiap situasi kehidupan Muslim: bangun tidur, masuk masjid, bepergian, makan, berpakaian, dan lainnya. Imam Nawawi menyusunnya dengan sangat sistematis dan mencantumkan derajat setiap hadits. Kitab ini menjadi rujukan utama untuk amaliyah harian seorang Muslim." },
+            { title: "Al-Arba'in An-Nawawiyyah", description: "42 hadits pilihan yang mencakup inti ajaran Islam. Setiap hadits dalam kitab ini adalah hadits shahih yang menjadi pokok (ummul hadits) bagi berbagai bab dalam agama. Imam Nawawi memilihnya dengan sangat selektif sehingga 42 hadits ini mencakup akidah, syariah, dan akhlak secara menyeluruh. Kitab ini sangat populer karena ringkas namun padat makna, dan menjadi kurikulum wajib di banyak lembaga pendidikan Islam." },
+            { title: "Al-Minhaj Syarh Shahih Muslim", description: "Syarah lengkap Shahih Muslim yang sangat mendalam dan komprehensif. Karya monumental ini menjelaskan setiap hadits dalam Shahih Muslim dengan sangat detail, mencakup penjelasan kata sulit, fiqih hadits, manfaat dan hikmah, serta bantahan terhadap pemahaman yang keliru. Syarah ini menjadi rujukan utama para ulama dan peneliti hadits hingga kini. Kedalaman ilmu dan kemudahan penyampaian Imam Nawawi membuat syarah ini menjadi standar dalam ilmu hadits." },
+            { title: "Minhajut Thalibin", description: "Ringkasan fiqih madzhab Syafi'i yang sistematis dan lengkap. Kitab ini merangkum Muharrar karya Imam Ar-Rafi'i dengan bahasa yang lebih ringkas dan mudah dipahami. Mencakup seluruh bab fiqih dari thaharah hingga miras (warisan), disusun secara sistematis dan menjadi salah satu matan terpenting dalam madzhab Syafi'i. Banyak ulama kemudian mensyarah kitab ini, menunjukkan betapa pentingnya dalam khazanah fiqih Syafi'i." },
+            { title: "Raudhatut Thalibin", description: "Ensiklopedi fiqih Syafi'i yang sangat lengkap dan detail. Kitab ini merupakan ringkasan dari kitab besar Syarhul Kabir karya Imam Ar-Rafi'i. Meskipun disebut "ringkasan", kitab ini tetap sangat voluminous dan mencakup pembahasan mendalam tentang seluruh aspek fiqih dengan menyebutkan berbagai pendapat dalam madzhab Syafi'i beserta dalil-dalilnya. Menjadi rujukan utama para mufti dan hakim Syafi'i." },
+            { title: "At-Tibyan fi Adabi Hamalatil Quran", description: "Panduan lengkap adab bagi penghafal dan pengajar Al-Qur'an. Kitab ini membahas secara detail tentang keutamaan Al-Qur'an, adab membaca dan mengajarkannya, etika penghafal Qur'an, dan berbagai hal yang berkaitan dengan Al-Qur'an. Imam Nawawi menyusunnya dengan sangat sistematis dan menjadi pedoman utama para huffazh dan guru Qur'an hingga sekarang." },
+            { title: "Al-Majmu' Syarh Al-Muhadzdzab", description: "Syarah monumental terhadap kitab Al-Muhadzdzab dalam fiqih Syafi'i. Meskipun Imam Nawawi tidak sempat menyelesaikannya (berhenti di kitab riba), karya ini menunjukkan keluasan ilmu dan kedalaman analisa beliau. Syarah ini sangat detail, mencakup dalil-dalil, pendapat ulama, dan analisa mendalam. Para ulama setelahnya melanjutkan penulisan kitab ini karena pentingnya sebagai rujukan." },
+            { title: "At-Taqrib wat Taysir", description: "Pengantar ilmu Musthalah Hadits (ilmu tentang metodologi hadits). Kitab ringkas namun komprehensif yang menjelaskan berbagai istilah dan klasifikasi hadits dari shahih, hasan, dhaif, hingga maudhu'. Imam Nawawi menyusunnya untuk memudahkan pemula memahami ilmu hadits. Banyak ulama mensyarah kitab ini karena pentingnya sebagai dasar memahami hadits." },
+            { title: "Tahdzibul Asma' wal Lughat", description: "Ensiklopedi biografi perawi hadits dan ulama, serta penjelasan istilah-istilah bahasa Arab yang penting. Kitab ini sangat bermanfaat untuk mengenal para perawi hadits dan memahami istilah-istilah dalam kitab-kitab klasik. Menunjukkan keluasan ilmu Imam Nawawi tidak hanya dalam fiqih dan hadits, tetapi juga dalam ilmu rijal dan bahasa." }
         ]
     }
 ];
