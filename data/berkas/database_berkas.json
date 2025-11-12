@@ -1,0 +1,16 @@
+{
+  "berkas": [
+    {
+      "id": 1,
+      "judul": "Contoh Teks Arab - Ilmu Nahwu",
+      "kategori": "nahwu",
+      "tingkat": "pemula",
+      "deskripsi": "Contoh teks Arab tentang pembahasan dasar ilmu nahwu",
+      "file_name": "20251112_202838_contoh_teks_arab.txt",
+      "file_path": "data\\berkas\\uploads\\20251112_202838_contoh_teks_arab.txt",
+      "upload_date": "2025-11-12 20:28:38",
+      "size_bytes": 615,
+      "jumlah_karakter": 334
+    }
+  ]
+}

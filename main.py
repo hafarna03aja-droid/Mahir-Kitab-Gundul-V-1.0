@@ -11,12 +11,13 @@ def menu_kelola_berkas():
         print("1. 📤 Upload File Teks Arab")
         print("2. 📋 Lihat Daftar Berkas")
         print("3. 📖 Baca Berkas")
-        print("4. 📋 Copy Teks Arab dari Berkas")
-        print("5. 🗑️  Hapus Berkas")
+        print("4. 🌐 Preview Berkas di Browser")
+        print("5. 📋 Copy Teks Arab dari Berkas")
+        print("6. 🗑️  Hapus Berkas")
         print("0. 🔙 Kembali ke Menu Utama")
         print("="*70)
         
-        pilihan = input("Pilih menu (0-5): ").strip()
+        pilihan = input("Pilih menu (0-6): ").strip()
         
         if pilihan == "1":
             kelola.upload_file()
@@ -25,8 +26,10 @@ def menu_kelola_berkas():
         elif pilihan == "3":
             kelola.baca_berkas()
         elif pilihan == "4":
-            kelola.copy_teks_arab()
+            kelola.preview_berkas()
         elif pilihan == "5":
+            kelola.copy_teks_arab()
+        elif pilihan == "6":
             kelola.hapus_berkas()
         elif pilihan == "0":
             break
