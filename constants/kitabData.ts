@@ -8,6 +8,7 @@ export interface Scholar {
     id: number;
     name: string;
     era: string;
+    birthPlace?: string; // Tempat lahir (opsional)
     expertise: string;
     bio: string;
     imageUrl: string; // Placeholder, UI has fallback
@@ -118,6 +119,7 @@ export const scholarsData: Scholar[] = [
         era: "631 H - 676 H / 1233 M - 1277 M",
         birthPlace: "Nawa, Damaskus, Suriah",
         expertise: "Fiqih Syafi'i, Hadits, Tasawuf, Ushul Fiqh",
+        imageUrl: "/images/al-nawawi.jpg",
         bio: `Imam Muhyiddin Abu Zakaria Yahya bin Syaraf An-Nawawi adalah salah satu ulama besar madzhab Syafi'i yang sangat berpengaruh dalam sejarah Islam. Beliau lahir di desa Nawa, dekat Damaskus pada tahun 631 H (1233 M) dan wafat di usia muda 45 tahun pada 676 H (1277 M).
 
 **Masa Kecil dan Pendidikan:**
@@ -161,7 +163,7 @@ Imam Nawawi wafat di kampung halamannya, Nawa, pada tahun 676 H dalam usia 45 ta
             { title: "Al-Arba'in An-Nawawiyyah", description: "42 hadits pilihan yang mencakup inti ajaran Islam. Setiap hadits dalam kitab ini adalah hadits shahih yang menjadi pokok (ummul hadits) bagi berbagai bab dalam agama. Imam Nawawi memilihnya dengan sangat selektif sehingga 42 hadits ini mencakup akidah, syariah, dan akhlak secara menyeluruh. Kitab ini sangat populer karena ringkas namun padat makna, dan menjadi kurikulum wajib di banyak lembaga pendidikan Islam." },
             { title: "Al-Minhaj Syarh Shahih Muslim", description: "Syarah lengkap Shahih Muslim yang sangat mendalam dan komprehensif. Karya monumental ini menjelaskan setiap hadits dalam Shahih Muslim dengan sangat detail, mencakup penjelasan kata sulit, fiqih hadits, manfaat dan hikmah, serta bantahan terhadap pemahaman yang keliru. Syarah ini menjadi rujukan utama para ulama dan peneliti hadits hingga kini. Kedalaman ilmu dan kemudahan penyampaian Imam Nawawi membuat syarah ini menjadi standar dalam ilmu hadits." },
             { title: "Minhajut Thalibin", description: "Ringkasan fiqih madzhab Syafi'i yang sistematis dan lengkap. Kitab ini merangkum Muharrar karya Imam Ar-Rafi'i dengan bahasa yang lebih ringkas dan mudah dipahami. Mencakup seluruh bab fiqih dari thaharah hingga miras (warisan), disusun secara sistematis dan menjadi salah satu matan terpenting dalam madzhab Syafi'i. Banyak ulama kemudian mensyarah kitab ini, menunjukkan betapa pentingnya dalam khazanah fiqih Syafi'i." },
-            { title: "Raudhatut Thalibin", description: "Ensiklopedi fiqih Syafi'i yang sangat lengkap dan detail. Kitab ini merupakan ringkasan dari kitab besar Syarhul Kabir karya Imam Ar-Rafi'i. Meskipun disebut "ringkasan", kitab ini tetap sangat voluminous dan mencakup pembahasan mendalam tentang seluruh aspek fiqih dengan menyebutkan berbagai pendapat dalam madzhab Syafi'i beserta dalil-dalilnya. Menjadi rujukan utama para mufti dan hakim Syafi'i." },
+            { title: "Raudhatut Thalibin", description: "Ensiklopedi fiqih Syafi'i yang sangat lengkap dan detail. Kitab ini merupakan ringkasan dari kitab besar Syarhul Kabir karya Imam Ar-Rafi'i. Meskipun disebut 'ringkasan', kitab ini tetap sangat voluminous dan mencakup pembahasan mendalam tentang seluruh aspek fiqih dengan menyebutkan berbagai pendapat dalam madzhab Syafi'i beserta dalil-dalilnya. Menjadi rujukan utama para mufti dan hakim Syafi'i." },
             { title: "At-Tibyan fi Adabi Hamalatil Quran", description: "Panduan lengkap adab bagi penghafal dan pengajar Al-Qur'an. Kitab ini membahas secara detail tentang keutamaan Al-Qur'an, adab membaca dan mengajarkannya, etika penghafal Qur'an, dan berbagai hal yang berkaitan dengan Al-Qur'an. Imam Nawawi menyusunnya dengan sangat sistematis dan menjadi pedoman utama para huffazh dan guru Qur'an hingga sekarang." },
             { title: "Al-Majmu' Syarh Al-Muhadzdzab", description: "Syarah monumental terhadap kitab Al-Muhadzdzab dalam fiqih Syafi'i. Meskipun Imam Nawawi tidak sempat menyelesaikannya (berhenti di kitab riba), karya ini menunjukkan keluasan ilmu dan kedalaman analisa beliau. Syarah ini sangat detail, mencakup dalil-dalil, pendapat ulama, dan analisa mendalam. Para ulama setelahnya melanjutkan penulisan kitab ini karena pentingnya sebagai rujukan." },
             { title: "At-Taqrib wat Taysir", description: "Pengantar ilmu Musthalah Hadits (ilmu tentang metodologi hadits). Kitab ringkas namun komprehensif yang menjelaskan berbagai istilah dan klasifikasi hadits dari shahih, hasan, dhaif, hingga maudhu'. Imam Nawawi menyusunnya untuk memudahkan pemula memahami ilmu hadits. Banyak ulama mensyarah kitab ini karena pentingnya sebagai dasar memahami hadits." },
